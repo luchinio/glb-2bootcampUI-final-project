@@ -8,7 +8,7 @@ tweetApp.config(['$routeProvider', function($routeProvider) {
       when('/timeline', { templateUrl: 'Views/timeline.html', controller: 'timelineController'}). 
       when('/timeline/:search', { templateUrl: 'Views/timeline.html', controller: 'timelineController'}). 
       when('/trends', { templateUrl: 'Views/trends.html', controller: 'trendsController'}).       
-      when('/timeline/:id', { templateUrl: 'Views/tweet.html', controller: 'timelineController'}).        
+      when('/tweet/:id', { templateUrl: 'Views/tweet.html', controller: 'timelineController'}).        
       when('/blockUsers', { templateUrl: 'Views/blockUsers.html', controller: 'blockUsersController'}). 
       otherwise({ redirectTo: '/timeline' });   
 }]);
@@ -23,13 +23,16 @@ tweetApp.run(['$templateCache', '$http', function ($templateCache, $http){
 
 //Header Active tab 
 tweetApp.controller('HeaderController', ['$scope', '$location', function($scope,$location){
-    $scope.isActive = function (viewLocation) { // sacar a función sin el $scope
-      return viewLocation === $location.path();
+    $scope.isActive = function (viewLocation) {
+      if($location.path().toString().indexOf('tweet') != -1){
+        return viewLocation == '/timeline';
+      }
+      return $location.path().toString().indexOf(viewLocation) != -1;
     };
 }]);
 
 //Timeline Controller
-tweetApp.controller('timelineController', ['$scope','tweetService','$routeParams', 'userService',function($scope, tweetService, $routeParams,userService){
+tweetApp.controller('timelineController', ['$scope','tweetService','$routeParams', 'userService', '$location', function($scope, tweetService, $routeParams,userService,$location){
 
   $scope.blockUsers = userService.getAll();
 
@@ -45,8 +48,8 @@ tweetApp.controller('timelineController', ['$scope','tweetService','$routeParams
   }
 
   if($routeParams.id){
-    tweetService.getById($routeParams.id).then(function(tweets){
-      $scope.tweet = tweets;  
+    tweetService.getById($routeParams.id).then(function(tweet){
+      $scope.tweet = tweet;  
     });
   }
 
@@ -57,11 +60,16 @@ tweetApp.controller('timelineController', ['$scope','tweetService','$routeParams
   };
 
   $scope.blockUser = function(blockUserName){
+    alert('User @' + blockUserName + ' is blocked !');
     userService.block(blockUserName);
   };
 
   $scope.isBlock = function(tweet){
     return $scope.blockUsers.indexOf(tweet.user.screen_name) == -1;
+  };
+
+  $scope.details = function(id){
+    $location.path('tweet/'+id);
   };
 
 }]);
@@ -71,7 +79,8 @@ tweetApp.controller('blockUsersController', ['$scope', 'userService', function($
 
   $scope.blockUsers = userService.getAll();
 
-  $scope.unblock = function(blockUserName){    
+  $scope.unblock = function(blockUserName){  
+    alert('User @' + blockUserName + ' is unblocked !');    
     userService.unblock(blockUserName);
   };
 

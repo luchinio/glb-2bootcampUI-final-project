@@ -3,7 +3,30 @@
 //UI Module
 var UIModule = angular.module('UIModule', ['dataModule']);
 
-//Filter for time
+//Reverse blockUsers string
+UIModule.filter('reverse', function() {
+  return function(tweets) {
+    return tweets.slice().reverse();
+  };
+});
+
+//Time in Tweet details
+UIModule.filter('detailTime',function(){
+	return function(twitterTime){
+		var dateTime = new Date(twitterTime);
+		var hours = dateTime.getHours();
+		  var minutes = dateTime.getMinutes();
+		  var ampm = hours >= 12 ? 'pm' : 'am';
+		  hours = hours % 12;
+		  hours = hours ? hours : 12;
+		  minutes = minutes < 10 ? '0'+minutes : minutes;
+		  var strTime = hours + ':' + minutes + ' ' + ampm;
+		var monthNames = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct','Nov', 'Dec'];
+		return dateTime.getDate() + ' ' + monthNames[dateTime.getMonth()] + ' ' + dateTime.getFullYear().toString().replace('20','') + ' - ' +  strTime;
+	};
+});
+
+//Filter for time in tweet list
 UIModule.filter('converTime', function(){
 	return function(datetime){
 		var tTime = new Date(datetime);
@@ -27,7 +50,7 @@ UIModule.filter('converTime', function(){
 	};
 });
 
-//Filter for links urls
+//Filter for links urls in tweet text
 UIModule.filter('convertUrl', ['$sce', function($sce){
     return function(text) {
    		return $sce.trustAsHtml(text);
@@ -68,5 +91,4 @@ UIModule.service('UIService', function(){
 	    };
 	    return tweet;
   	};  	
-  	
 });
