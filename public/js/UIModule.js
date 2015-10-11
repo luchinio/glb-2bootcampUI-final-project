@@ -78,7 +78,7 @@ UIModule.service('UIService', function(){
 	    if(tweet.entities.hashtags){
 	      if(tweet.entities.hashtags.length > 0){
 	        angular.forEach(tweet.entities.hashtags,function(hashtag){
-	          tweet.text = tweet.text.replace('#'+hashtag.text,'<a href="#timeline/'+hashtag.text+'">'+'#'+hashtag.text+'</a>');          	          
+	          tweet.text = tweet.text.replace('#'+hashtag.text,'<a href="#timeline/'+hashtag.text+'">'+'#'+hashtag.text+'</a>');          
 	        });    
 	      }
 	    };

@@ -33,14 +33,12 @@ dataModule.service('tweetService', ['UIService', 'userService', '$http', '$q',fu
 			var tweets = result.data;
 			angular.forEach(tweets,function(tweet){
 				if(tweet.retweeted_status){
-					tweet = UIService.textParser(tweet.retweeted_status);	
+					tweet.retweeted_status = UIService.textParser(tweet.retweeted_status);	
 				}else{
 					tweet = UIService.textParser(tweet);	
-				};
-				// console.log(tweet);
+				};				
 			});
-			deferred.resolve(tweets);
-			//return tweets;
+			deferred.resolve(tweets);			
 		},function(error){
 			deferred.reject("Unable to get tweets from timeline");
 		});
@@ -49,15 +47,15 @@ dataModule.service('tweetService', ['UIService', 'userService', '$http', '$q',fu
 
 	this.getById = function(id){
 		var deferred = $q.defer();
-		$http.get('http://localhost:3000/statuses/show?id='+id).then(function(tweet){
-			if(tweet){
+		$http.get('http://localhost:3000/statuses/show?id='+id).then(function(result){
+			if(result.data){
+				var tweet = result.data;
 				if(tweet.retweeted_status){
-					tweet = UIService.textParser(tweet.retweeted_status);	
+					tweet.retweeted_status = UIService.textParser(tweet.retweeted_status);	
 				}else{
 					tweet = UIService.textParser(tweet);	
 				};
-			}
-			//return tweet;
+			};				
 			deferred.resolve(tweet);
 		},function(error){
 			deferred.reject("Unable to get tweet by id");
@@ -71,12 +69,11 @@ dataModule.service('tweetService', ['UIService', 'userService', '$http', '$q',fu
 			var tweets = result.data.statuses;								
 			angular.forEach(tweets,function(tweet){
 				if(tweet.retweeted_status){
-					tweet = UIService.textParser(tweet.retweeted_status);	
+					tweet.retweeted_status = UIService.textParser(tweet.retweeted_status);	
 				}else{
 					tweet = UIService.textParser(tweet);	
 				};
-			});			
-			console.log(tweets);
+			});						
 			deferred.resolve(tweets);
 		},function(error){
 			deferred.reject("Unable to get tweets by text")	
@@ -104,8 +101,7 @@ dataModule.service('trendsService', ['$http','geoLocationService', '$q', functio
 
 	var getByCountryId = function(countryId){
 		var deferred = $q.defer();
-        $http.get('http://localhost:3000/trends?id='+countryId).then(function(trends){
-        	//console.log(trends);
+        $http.get('http://localhost:3000/trends?id='+countryId).then(function(trends){        	
         	return deferred.resolve(trends.data[0].trends);
         }, function(error){
         	return deferred.reject("Unable to get trends by country");
