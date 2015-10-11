@@ -1,9 +1,6 @@
-/**
- * Replace with your data and rename the file as keys.json
- */
 {
-  "consumer_key": "your consumer key",
-  "consumer_secret":  "your consumer secret",
-  "access_token_key": "your access token",
-  "access_token_secret": "your acccess token secret"    
+  "consumer_key": "nMoZmcG3pGYkiML9yqxdeBJrU", 
+  "consumer_secret":  "uJwU6soy39fuLCIfkZz2DlkGtk3wh1SaLbC1olHLkIPf3k4yyp",
+  "access_token": "1449539430-rzIPvazcMxee8KLEUphWzBwpHO9fsuAIt6R0qWf",
+  "access_token_secret": "sCD69U6yrfQjnBHT6gRHlot9tssJPGG7XznVvzgqxBvBL"   
 }

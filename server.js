@@ -3,7 +3,7 @@ var express = require('express'),
     Twit = require('twit');
 
 var app = express();
-var T = new Twit(require('./keys.json'));
+var T = new Twit(require('./keys.default.json'));
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
@@ -57,8 +57,14 @@ app.get('/trends', function(req, res) {
 //http://localhost:3000/search?q=%23TanBionicaCocaColaFM
 app.get('/search', function(req, res) {
   T.get('/search/tweets', req.query, function(err, data, response) {
-    console.log(data);
-      return res.json(data);
+    return res.json(data);
+  })
+});
+
+//http://localhost:3000/statuses?id=651204850168926200
+app.get('/statuses/show', function(req, res) {
+  T.get('/statuses/show', req.query, function(err, data, response) {
+    return res.json(data);
   })
 });
 

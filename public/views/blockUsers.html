@@ -1,0 +1,12 @@
+<div id="blockedsfield">    
+  <div class="blockedadd">
+      <input type="text" ng-model="newBlockUser" class="blockedtoadd" placeholder="Insert user name to block">
+    <a class="button">
+      <div class="icon" ng-click="block(newBlockUser); newBlockUser = '';"></div>
+    </a>
+  </div>
+  <div class="blocked" ng-repeat="user in blockUsers | reverse">
+    <span class="blockednameid">@{{user}}</span>
+    <a class="icon" ng-click="unblock(user)"></a>
+  </div>
+</div>

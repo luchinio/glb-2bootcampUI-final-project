@@ -1,0 +1,41 @@
+<div id="tweetsfield">    
+  <div class="tweet tdetail">
+    <div class="retweet" ng-if="tweet.retweeted_status">
+      <div class="icon"></div>
+      <span>{{tweet.user.name}} retweeted</span>
+    </div>
+    <div class="tweetbody">
+      <div class="tweetavatar">
+        <img ng-src="{{tweet.retweeted_status ? tweet.retweeted_status.user.profile_image_url : tweet.user.profile_image_url}}">
+      </div>
+      <span class="tweetname">{{tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name}}</span>
+      <span class="tweetnameid">@{{tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name}}</span>
+       <span class="tweettext" ng-bind-html="tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text | convertUrl"></span>
+      <span class="tweettime">{{ tweet.retweeted_status ? tweet.retweeted_status.created_at : tweet.created_at | detailTime }}</span>
+    </div>
+    <div class="tweet-stats">
+      <div class="tweet-stat retweets">
+        <span class="tweet-stat-count retweets-count">{{tweet.retweeted_status ? tweet.retweeted_status.retweet_count : tweet.retweet_count}}</span>
+        <span class="tweet-stat-label"> RETWEETS</span>
+      </div>
+      <div class="tweet-stat favorites">
+        <span class="tweet-stat-count favorites-count">{{tweet.retweeted_status ? tweet.retweeted_status.favorite_count : tweet.favorite_count}}</span>
+        <span class="tweet-stat-label"> FAVORITOS</span>
+      </div>
+    </div>
+    <div class="tweet-actions">
+      <a href="#" class="action-reply">
+        <div class="icon"></div>
+      </a>
+      <a href="#" class="action-retweet">
+        <div class="icon"></div>
+      </a>
+      <a href="#" class="action-favorite">
+        <div class="icon"></div>
+      </a>
+      <a href="#" class="action-more">
+        <div class="icon"></div>
+      </a>
+    </div>
+  </div>
+</div>
