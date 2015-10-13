@@ -1,8 +1,494 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: #EEEEEE;
+    color: #333;
+    font: normal normal normal 13px/1.5 'Helvetica Neue',Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a, a:hover {
+	cursor: default;
+}
+
+
+
+
+#barrasup {
+    background-color: #5BABE5;
+    background-image: -webkit-linear-gradient(top,#5BABE5,#297CB7 36px,#297CB7);
+    background-image: linear-gradient(to bottom,#5BABE5,#297CB7 36px,#297CB7);
+    height: 36px;
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+#barrasup-left {
+	float: left;
+}
+
+.icon {
+	background: url('../images/iconos.png') no-repeat;
+    -webkit-background-size: 325px 236px;
+    background-size: 325px 236px;
+}
+
+#logotwitter {
+    margin: 2px 10px 0 10px;
+    height: 20px;
+    width: 22px;
+    background-position: -54px -200px;
+	float: left;
+}
+
+#barrasup-left span {
+    color: #FFF;
+    text-shadow: rgba(0,0,0,.5) 0 -1px 0;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+#barrasup-left a{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+#barramenu {
+    background-color: #000;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#444),to(#000));
+    background-image: -webkit-linear-gradient(top,#444,#000);
+    background-image: linear-gradient(to bottom,#444,#000);
+    border-top: 1px solid #1B1B1B;
+    overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+    -webkit-box-shadow: rgba(0,0,0,.5) 0 1px 3px,rgba(0,0,0,.15) 0 -1px 0 inset;
+    box-shadow: rgba(0,0,0,.5) 0 1px 3px,rgba(0,0,0,.15) 0 -1px 0 inset;
+    position: relative;
+    z-index: 99999999999;
+	min-height: 5px;
+}
+
+#barramenu .itemmenu {
+    display: block;
+    height: 44px;
+    padding-top: 3px;
+	border-top: 1px solid #525252;
+    text-align: center;
+    min-width: 50px;
+    max-width: 160px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#barramenu .itemmenu.active {
+    background-color: #1c1c1c;
+    border-top: 1px solid #2D2D2D;
+}
+
+#barramenu .itemmenu > div {
+    height: 25px;
+    width: 25px;
+    margin: 0 auto;
+}
+
+#barramenu .itemmenu > span {
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: -1px;
+    padding: 0 3px;
+    color: #999;
+	display: block;
+}
+
+#barramenu .itemmenu, #barramenu .itemmenu:hover, #barramenu .itemmenu > span, #barramenu .itemmenu:hover > span {
+    color: #999 !important;
+	text-decoration: none !important;
+}
+
+#barramenu .itemmenu.menuhome div {
+    background-position: -1px 0;
+}
+
+#barramenu .itemmenu.menuhome.active div {
+    background-position: -34px 0;
+}
+
+#barramenu .itemmenu.menublock div {
+    background-position: -189px 0;
+}
+
+#barramenu .itemmenu.menublock.active div {
+    background-position: -221px 0;
+}
+
+#barramenu .itemmenu.menutrend div {
+    background-position: -133px 0;
+}
+
+#barramenu .itemmenu.menutrend.active div {
+    background-position: -160px 0;
+}
+
+
+
+
+#tweetsfield, #blockedsfield, #trendsfield {
+	background-color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.tweet {
+    border-bottom: 1px solid #E6E6E6;
+	padding: 10px 14px 14px;
+}
+
+.retweet a{
+    box-sizing: border-box;
+    margin: 3px 0 6px;
+    line-height: 15px;
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.retweet div {
+	margin: 2px 8px 0 34px;
+	width: 14px;
+	height: 10px;
+    background-position: -25px -225px;
+	float: left;
+}
+
+.tweetbody {
+    min-height: 52px;
+	position: relative;
+}
+
+.tweetbody .iconsearch{
+    background: url('../images/iconos.png') no-repeat;
+    -webkit-background-size: 325px 236px;
+    background-size: 325px 236px;
+    background-position: -137px -198px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 40px;
+    width: 15px;
+    height: 18px;
+}
+
+.tweetbody .icon{
+    background-position: -43px -184px;
+    width: 12px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.tweetavatar {
+    background-color: #fff;
+    width: 48px;
+    height: 48px;
+	float: left;
+	margin: 4px 8px 0 0;
+}
+
+.tweetavatar img {
+    border-radius: 4px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.tweetname > a{
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.tweetnameid > a, .blockednameid {
+    line-height: 14px;
+    margin-top: 0;
+    font-size: 12px;
+    font-weight: 400;
+	color: #999;
+	margin-left: 5px;
+    cursor: pointer;
+}
+
+.tweettime {
+    color: #ccc;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.tweettext {
+    display: block;
+    margin-left: 56px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.tweettext a, .tweettext a:hover, .tweettext a:active {
+	text-decoration: none !important;
+    color: #2477b3 !important;
+    cursor: pointer;
+}
+
+
+/*BLock User  ADD */
+.tweet.tdetail .blockuser {
+    display: block;
+}
+
+.blockuser {
+    margin-left: 10px;
+}
+
+.blockuser .icon{
+    background-position: -31px -183px;
+}
+
+
+
+
+
+.tweet.tdetail {
+    padding-bottom: 0;
+}
+
+.tweet.tdetail .tweetname {
+    display: block;
+    padding-top: 10px;
+}
+
+.tweet.tdetail .tweetnameid {
+	display: block;
+}
+
+.tweet.tdetail .tweettext {
+    margin-left: 1px;
+    margin-top: 17px;
+    font-size: 18px;
+	font: normal normal normal 18px/24px Georgia,Palatino,'Helvetica Neue',Helvetica,Arial,sans-serif!important;
+}
+
+.tweet.tdetail .tweettime {
+	position: relative;
+    display: block;
+    margin: 10px 0 15px 0;
+    color: #bbb;
+}
+
+.tweet-stats {
+    padding: 0 10px;
+    border-top: 1px solid #E6E6E6;
+    font-size: 11px;
+}
+
+.tweet-stat {
+    display: inline-block;
+    padding: 10px 5px 10px 0;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.tweet-stat-count {
+    font-weight: 700;
+    color: #666;
+}
+
+.tweet-actions {
+	border-top: 1px solid #E6E6E6;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+}
+
+.tweet-actions a {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    text-align: center;
+	height: 49px;
+}
+
+.tweet-actions a:active {
+	background:#EEE
+}
+
+.tweet-actions a div {
+	margin: 11px auto;
+    width: 24px;
+    height: 22px;
+}
+
+.tweet-actions a.action-reply div{
+    background-position: 0 -33px;
+}
+
+.tweet-actions a.action-retweet div{
+    background-position: -25px -33px;
+    width: 30px;
+}
+
+.tweet-actions a.action-favorite div{
+    background-position: -87px -33px;
+    width: 20px;
+}
+
+.tweet-actions a.action-more div{
+    background-position: -128px -32px;
+    width: 31px;
+    height: 20px;
+}
+
+
+
+
+
+
+.button {
+    background-color: #DDD;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#FFF),to(#DDD));
+    background-image: -webkit-linear-gradient(top,#FFF,#DDD);
+    background-image: linear-gradient(to bottom,#FFF,#DDD);
+    border-radius: 5px;
+    -webkit-box-shadow: rgba(255,255,255,.5) 0 1px 0;
+    box-shadow: rgba(255,255,255,.5) 0 1px 0;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px;
+    color: #333;
+    padding: 6px 8px;
+    text-shadow: #F0F0F0 0 1px;
+	position: absolute;
+    top: 8px;
+    right: 0;
+}
+
+.button div {
+	height: 15px;
+    width: 32px;
+	background-position: 2px -136px;
+}
+
+.button .icon {
+    height: 15px;
+    width: 32px;
+    background-position: 2px -136px;
+}
+
+
+
+
+
+#blockedsfield, #trendsfield {
+	padding-bottom: 10px;
+}
+
+.blocked, .blockedadd, .trend {
+    border-bottom: 1px solid #E6E6E6;
+	padding: 14px 0;
+	margin: 0 14px;
+	position: relative;
+}
+
+.blockedadd input {  
+    width: calc(100% - 55px);
+}
+
+.blockedtoadd {
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    padding: 0 8px;
+	width: 100%;
+	color: #2477b3;
+}
+
+.blockedadd a.button {
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.blocked a {
+    width: 17px;
+    height: 21px;
+    float: right;
+    margin-right: 10px;
+    background-position: -160px -32px;
+}
+
+.blocked a:hover {
+    background-position: -160px -55px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.trendname  a{
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #333;
+}
+
+.trend > a {
+    width: 10px;
+    height: 18px;
+    float: right;
+    margin-right: 10px;
+    background-position: -94px -197px;
+    cursor: pointer;
+}
+
+.trend > a:hover {
+    background-position: -85px -197px;
+}
+
+.trend.ispromoted a {
+	margin-top: 14px;
+}
+
+.trendpromoted {
+    display: block;
+	color: #999;
+    font-size: 12px;
+	margin-top: 3px;
+}
+
+.trendpromoted div {
+    width: 18px;
+    height: 15px;
+    background-position: 0px -101px;
+    float: left;
+    margin-right: 2px;
 }

@@ -1,17 +1,18 @@
 <div id="tweetsfield" ng-repeat="tweet in tweets | filter:isBlock">
-  <div class="tweet" ng-click="details(tweet.id_str)">
+  <div class="tweet" >
     <div class="retweet" ng-if="tweet.retweeted_status">
       <div class="icon"></div>
       <span><a ng-href="#timeline/{{tweet.user.screen_name}}">{{tweet.user.name}}</a> retweeted</span>    
     </div>
     <div class="tweetbody">
       <div class="tweetavatar">
+        <a class="iconsearch" ng-click="details(tweet.id_str)"></a>
         <a ng-href="#timeline/{{tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name}}"><img ng-src="{{tweet.retweeted_status ? tweet.retweeted_status.user.profile_image_url : tweet.user.profile_image_url}}"></a>
       </div>
       <span class="tweetname"><a ng-href="#timeline/{{tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name}}">{{tweet.retweeted_status ? tweet.retweeted_status.user.name : tweet.user.name}}</a></span>
       <span class="tweetnameid"><a ng-href="#timeline/{{tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name}}">@{{tweet.retweeted_status ? tweet.retweeted_status.user.screen_name : tweet.user.screen_name}}</a></span>
-      <span class="blockuser"><a class="icon" ng-click="blockUser(tweet.user.screen_name)">Block</a></span>
-       <span class="tweettext" ng-bind-html="tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text | convertUrl"></span>
+      <a class="icon" ng-click="blockUser(tweet.user.screen_name)"></a>
+      <span class="tweettext" ng-bind-html="tweet.retweeted_status ? tweet.retweeted_status.text : tweet.text | convertUrl"></span>
       <span class="tweettime">{{ tweet.retweeted_status ? tweet.retweeted_status.created_at : tweet.created_at | converTime }}</span>
     </div>  
   </div>

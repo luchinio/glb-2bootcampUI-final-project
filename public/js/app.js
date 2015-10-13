@@ -43,7 +43,7 @@ tweetApp.controller('timelineController', ['$scope','tweetService','$routeParams
     });  
   }else{
     tweetService.getAll().then(function(tweets){
-      $scope.tweets = tweets;  
+      $scope.tweets = tweets;
     });
   }
 
@@ -79,14 +79,18 @@ tweetApp.controller('blockUsersController', ['$scope', 'userService', function($
 
   $scope.blockUsers = userService.getAll();
 
-  $scope.unblock = function(blockUserName){  
-    alert('User @' + blockUserName + ' is unblocked !');    
-    userService.unblock(blockUserName);
+  $scope.unblock = function(blockUserName){ 
+      alert('User @' + blockUserName + ' is unblocked !');  
+      userService.unblock(blockUserName);
   };
 
   $scope.block = function(newBlockUser){
-    var name = newBlockUser.replace('@','');
-    userService.block(name);
+    if (newBlockUser){
+      if(newBlockUser.toString().length > 0){
+        var name = newBlockUser.replace('@','');
+        userService.block(name);
+      }
+    }
   }
 
 }]);
